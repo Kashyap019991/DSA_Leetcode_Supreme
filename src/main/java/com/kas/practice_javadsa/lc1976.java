@@ -30,10 +30,10 @@ class Main {
         System.out.println();
     }
 }
-class Pair {
+class Pairr {
     int first;
     int second;
-    public Pair(int first, int second) {
+    public Pairr(int first, int second) {
         this.first = first;
         this.second = second;
     }
@@ -43,18 +43,18 @@ class lc1976 {
     static int countPaths(int n, List < List < Integer >> roads) {
 
         // Creating an adjacency list for the given graph.
-        ArrayList < ArrayList < Pair >> adj = new ArrayList < > ();
+        ArrayList < ArrayList <Pairr>> adj = new ArrayList < > ();
         for (int i = 0; i < n; i++) {
             adj.add(new ArrayList < > ());
         }
         int m = roads.size();
         for (int i = 0; i < m; i++) {
-            adj.get(roads.get(i).get(0)).add(new Pair(roads.get(i).get(1), roads.get(i).get(2)));
-            adj.get(roads.get(i).get(1)).add(new Pair(roads.get(i).get(0), roads.get(i).get(2)));
+            adj.get(roads.get(i).get(0)).add(new Pairr(roads.get(i).get(1), roads.get(i).get(2)));
+            adj.get(roads.get(i).get(1)).add(new Pairr(roads.get(i).get(0), roads.get(i).get(2)));
         }
 
         // Defining a priority queue (min heap). 
-        PriorityQueue < Pair > pq = new PriorityQueue < Pair > ((x, y) -> x.first - y.first);
+        PriorityQueue <Pairr> pq = new PriorityQueue <Pairr> ((x, y) -> x.first - y.first);
 
         // Initializing the dist array and the ways array
         // along with their first indices.
@@ -66,7 +66,7 @@ class lc1976 {
         }
         dist[0] = 0;
         ways[0] = 1;
-        pq.add(new Pair(0, 0));
+        pq.add(new Pairr(0, 0));
 
         // Define modulo value
         int mod = (int)(1e9 + 7);
@@ -78,7 +78,7 @@ class lc1976 {
             int node = pq.peek().second;
             pq.remove();
 
-            for (Pair it : adj.get(node)) {
+            for (Pairr it : adj.get(node)) {
                 int adjNode = it.first;
                 int edW = it.second;
 
@@ -87,7 +87,7 @@ class lc1976 {
                 // in PQ and keep the no. of ways the same.
                 if (dis + edW < dist[adjNode]) {
                     dist[adjNode] = dis + edW;
-                    pq.add(new Pair(dis + edW, adjNode));
+                    pq.add(new Pairr(dis + edW, adjNode));
                     ways[adjNode] = ways[node];
                 } 
 

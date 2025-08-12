@@ -1,8 +1,6 @@
 package com.kas.practice_javadsa;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 class Node{
@@ -18,23 +16,23 @@ class MapSum {
     }
     
     public void insert(String key, int val) {
-        Node node=root;
+        Node Node =root;
         for(Character ch:key.toCharArray()){
-            if(node.children.containsKey(ch))
+            if(Node.children.containsKey(ch))
             {//already available then get it
-                node = node.children.get(ch);
-                node.currVal.put(key,val);
+                Node = Node.children.get(ch);
+                Node.currVal.put(key,val);
             }else{
                 //if not thn insert
                 Node newNode = new Node();
-                node.children.put(ch,newNode);
-                node.currVal.put(key,val);
-                node = newNode;
+                Node.children.put(ch, newNode);
+                Node.currVal.put(key,val);
+                Node = newNode;
             }
             
         }
-        node.isWord = true;
-        node.currVal.put(key,val);
+        Node.isWord = true;
+        Node.currVal.put(key,val);
     }
     
     public int sum(String prefix) {

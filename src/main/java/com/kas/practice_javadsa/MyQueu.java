@@ -1,14 +1,13 @@
-package com.javapr;
-
+package com.kas.practice_javadsa;
 import java.util.Stack;
 
-class MyQueue {
+class MyQueu {
 	//class MyQueue {
 	    Stack<Integer> inStack = new Stack<>();//1,2,3
 	    Stack<Integer> outStack = new Stack<>();//3,2,1
 	    int front;
 
-	    public MyQueue() {
+	    public MyQueu() {
 	        
 	    }
 	  
@@ -44,7 +43,7 @@ class MyQueue {
 	    public boolean empty() {
 	         return inStack.isEmpty();
 	}
-	}
+
 	/**
 	 * Your MyQueue object will be instantiated and called as such:
 	 * MyQueue obj = new MyQueue();
@@ -57,7 +56,7 @@ class MyQueue {
     //["MyQueue","push","push","push","push","pop","push","pop","pop","pop","pop"]
     //[],[1],[2],[3],[4],[],[5],[],[],[],[]
     public static void main(String[] args) {
-		MyQueue mq = new MyQueue();
+		MyQueu mq = new MyQueu();
 		mq.push(1);
 		mq.push(2);
 		mq.push(3);

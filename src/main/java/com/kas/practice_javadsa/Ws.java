@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-class TrieNode{
-    HashMap<Character,TrieNode> child = new HashMap<>();
-    TrieNode(){}
+class TrieNod {
+    HashMap<Character, TrieNod> child = new HashMap<>();
+    TrieNod(){}
     String word = null;
 }
 class Ws {
@@ -15,11 +15,11 @@ class Ws {
 	    int rows;
 	    int cols;
 	    public List<String> findWords(char[][] board, String[] words) {
-	        TrieNode root = new TrieNode();
+	        TrieNod root = new TrieNod();
 	         rows = board.length;
 	         cols = board[0].length;
 	         for(String word:words){
-	 	            TrieNode t = root;
+	 	            TrieNod t = root;
 	 	            for(Character c:word.toCharArray()){
 	 	                if(t.child.get(c) != null){
 	 	                    //get and assign it to t
@@ -28,7 +28,7 @@ class Ws {
 	 	                }
 	 	                else{
 	 	                    //put new node with char ch in t
-	 	                	TrieNode newt = new TrieNode();
+	 	                	TrieNod newt = new TrieNod();
 	 	                    t.child.put(c,newt);
 	 	                    t = newt;
 	 	                }
@@ -46,9 +46,9 @@ class Ws {
 	         return ans;
 	     }
 	     
-	     void backtrack(int i,int j,TrieNode parent){
+	     void backtrack(int i, int j, TrieNod parent){
 	         Character currLtr = board[i][j];
-	         TrieNode currNode = parent.child.get(currLtr);
+	         TrieNod currNode = parent.child.get(currLtr);
 	         if(currNode.word != null){
 	             //add word to ans list
 	             ans.add(currNode.word);

@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 class LRUCache {
-    Map<Integer ,Node> cache;
+    Map<Integer , Noode> cache;
     int cap ;
-    Node head = new Node(0,0);;
-    Node tail = new Node(0,0);
+    Noode head = new Noode(0,0);;
+    Noode tail = new Noode(0,0);
     public LRUCache(int capacity) {
-        cache = new HashMap<Integer,Node>();
+        cache = new HashMap<Integer, Noode>();
         this.cap = capacity;
         head.next = tail;
         tail.prev = head;
@@ -20,17 +20,17 @@ class LRUCache {
     public int get(int key) {
         //if already available then remove and insert again to maintain LRU
         if(cache.get(key) != null){
-            Node node = cache.get(key);
+            Noode noode = cache.get(key);
             
-            remove(node);
-            insert(node);
-            return node.val;
+            remove(noode);
+            insert(noode);
+            return noode.val;
         }
         return -1;
     }
     
     public void put(int key, int value) {
-        Node node = new Node(key,value);
+        Noode noode = new Noode(key,value);
         //cache.put(key,node);
         //TODO:
         if(cache.size() == cap){
@@ -47,41 +47,41 @@ class LRUCache {
             
             
         }
-        insert(node);
+        insert(noode);
     }
-    void insert(Node node){
+    void insert(Noode noode){
         //1    ->   2   ->   3
         //       0<-      <-
         
-        cache.put(node.key,node);
-        node.next = head.next;
-        head.next.prev = node; 
+        cache.put(noode.key, noode);
+        noode.next = head.next;
+        head.next.prev = noode;
         
-        node.prev = head;
-        head.next = node;
+        noode.prev = head;
+        head.next = noode;
         
     }
     
-    void remove(Node node){
+    void remove(Noode noode){
         //0 -> 1 -> 2 -> 0
         //  <-   <-   <-
-        cache.remove(node.key);
-        node.prev.next = node.next;
+        cache.remove(noode.key);
+        noode.prev.next = noode.next;
         
-        node.next.prev = node.prev;
+        noode.next.prev = noode.prev;
         
         
         
     }
 }
 
-class Node{
+class Noode {
     int val;
     int key;
-    Node prev;
-    Node next;
+    Noode prev;
+    Noode next;
     
-    Node(int val,int key){
+    Noode(int val, int key){
         this.val = val;
        this.key = key;
     }
