@@ -7,6 +7,7 @@ public class P_5_SubsetWithRec {
     static List<String> subsets = new ArrayList<>();
     StringBuilder subset = new StringBuilder();
     public void findSubset(String inp, int ind){
+
         if(ind == inp.length()) {
             subsets.add(subset.toString());
 
